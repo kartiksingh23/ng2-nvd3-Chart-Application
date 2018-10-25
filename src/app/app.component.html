@@ -1,8 +1,3 @@
-<div class="form-group">
-  <label for="file">Choose File</label>
-  <input type="file"
-         id="file"
-         (change)="handleFileInput($event.target.files)">
-</div>
-<app-stacked-area-chart [data]="unifiedGraphData" [x_min]="x_min" [x_max]="x_max"></app-stacked-area-chart>
+<app-header></app-header>
 <router-outlet></router-outlet>
+

@@ -8,12 +8,14 @@ import 'd3';
 import 'nvd3';
 import { StackedAreaChartComponent } from './stacked-area-chart/stacked-area-chart.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StackedAreaChartComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

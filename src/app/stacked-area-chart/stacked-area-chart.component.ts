@@ -9,6 +9,8 @@ export class StackedAreaChartComponent implements OnInit {
   @Input() data ;
   @Input() x_min ;
   @Input() x_max ;
+  @Input() xLabel ;
+  @Input() yLabel ;
   public options: any ;
  
   constructor() { }
@@ -30,7 +32,7 @@ export class StackedAreaChartComponent implements OnInit {
       margin : {  
           top: 20,
           right: 20,
-          bottom: 30,
+          bottom: 50,
           left: 100
       },
       x: function(d){return d[0];},
@@ -41,6 +43,7 @@ export class StackedAreaChartComponent implements OnInit {
       duration: 100,
       useInteractiveGuideline: true,
       xAxis: {
+          axisLabel: this.xLabel,
           showMaxMin: false,
           ticks:5
         //   tickFormat: function(d){
@@ -48,8 +51,9 @@ export class StackedAreaChartComponent implements OnInit {
         // }
       },
       yAxis: {
-           tickFormat: function(d){
-            return d3.format('e')(d);
+          axisLabel: this.yLabel,
+          tickFormat: function(d){
+          return d3.format('e')(d);
         }
       },
       xDomain: [this.x_min  ,this.x_max],     

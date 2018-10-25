@@ -1,3 +1,15 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div class="form-group">
+    <label style="margin-right:2%;" for="file">Choose File: </label>
+    <input style="display:inline-block" type="file"
+          id="file"
+          (change)="handleFileInput($event.target.files)">
+  </div>
+</div>
+<div style="min-height:50px">
+</div>
+<div class="container">
+  <div class="col-sm-offset-2 col-md-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-lg-8">
+      <app-stacked-area-chart [data]="unifiedGraphData" [xLabel]="'Retention Time (in Minutes)'" [yLabel]="'Intensity'"  [x_min]="x_min" [x_max]="x_max"></app-stacked-area-chart>
+  </div>
+</div>
