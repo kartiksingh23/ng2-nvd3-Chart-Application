@@ -4,7 +4,5 @@
          id="file"
          (change)="handleFileInput($event.target.files)">
 </div>
-<div>
-  <nvd3 [options]="options" [data]="overall"></nvd3>
-</div>
+<app-stacked-area-chart [data]="unifiedGraphData" [x_min]="x_min" [x_max]="x_max"></app-stacked-area-chart>
 <router-outlet></router-outlet>

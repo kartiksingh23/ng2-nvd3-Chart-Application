@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
-import { FileuploadService } from './fileupload.service';
 import { NvD3Module } from 'ng2-nvd3';
 import 'd3';
 import 'nvd3';
+import { StackedAreaChartComponent } from './stacked-area-chart/stacked-area-chart.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StackedAreaChartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import 'nvd3';
     HttpClientModule,
     NvD3Module 
   ],
-  providers: [HttpClient,FileuploadService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
