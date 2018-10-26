@@ -28,7 +28,6 @@ export class StackedAreaChartComponent implements OnInit {
     chart: {
       type: 'stackedAreaChart',
       height: 400,
-      // width:450,
       margin : {  
           top: 20,
           right: 20,
@@ -46,9 +45,6 @@ export class StackedAreaChartComponent implements OnInit {
           axisLabel: this.xLabel,
           showMaxMin: false,
           ticks:5
-        //   tickFormat: function(d){
-        //     return d3.format(',.8f')(d);
-        // }
       },
       yAxis: {
           axisLabel: this.yLabel,
@@ -56,7 +52,12 @@ export class StackedAreaChartComponent implements OnInit {
           return d3.format('e')(d);
         }
       },
-      xDomain: [this.x_min  ,this.x_max],     
+      xDomain: [this.x_min  ,this.x_max],    
+      legend:{
+        margin:{
+          bottom:20
+        }
+      } ,
       zoom: {
           enabled: true,
           scaleExtent: [1, 100],

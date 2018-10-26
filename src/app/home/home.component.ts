@@ -60,9 +60,9 @@ export class HomeComponent {
   }
 
   createGraphGroups(){
-    // let mergeSampleData=[];
+
     let mergeSampleData: { [id: string] : [number]; } = {};
-    let mergedList=[];
+
     let maxLength = 0;
     this.allGroupsUnifiedGraphData=[];
     this.fileData.groups.forEach(group => {
@@ -99,7 +99,6 @@ export class HomeComponent {
         key:key,
         values:value
       });   
-      // Use `key` and `value`
   }
     let xDomain=   this.calculateXDomain(this.allGroupsUnifiedGraphData);
     this.x_min_all_groups=xDomain[0];
@@ -118,15 +117,11 @@ export class HomeComponent {
       this.createGraphGroups();
     }
     reader.readAsText(files.item(0));
-    console.log(this.fileData);
-    // this.createGraph();
   }
 
   calculateXDomain(data:any){
     let xMax=Number.POSITIVE_INFINITY;
     let xMin=Number.NEGATIVE_INFINITY;
-
-    console.log(data);
 
     data.forEach(item => {
       item.values.forEach(valueElement => {
