@@ -29,7 +29,7 @@ export class StackedAreaChartComponent implements OnInit {
       type: 'stackedAreaChart',
       height: 400,
       margin : {  
-          top: 20,
+          top: 50,
           right: 20,
           bottom: 50,
           left: 100
