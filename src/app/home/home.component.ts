@@ -11,8 +11,13 @@ export class HomeComponent {
   public fileData: any;
   public graphData: any;
   public unifiedGraphData=[];
+  public allGroupsUnifiedGraphData=[];
+  public groupMergedList=[];
   public x_min;
   public x_max;
+  public x_min_all_groups;
+  public x_max_all_groups;
+
 
   constructor(){}
 
@@ -49,7 +54,56 @@ export class HomeComponent {
       });    
     });
 
-    this.calculateXDomain(this.unifiedGraphData);
+    let xDomain=this.calculateXDomain(this.unifiedGraphData);
+    this.x_min=xDomain[0];
+    this.x_max=xDomain[1];
+  }
+
+  createGraphGroups(){
+    // let mergeSampleData=[];
+    let mergeSampleData: { [id: string] : [number]; } = {};
+    let mergedList=[];
+    let maxLength = 0;
+    this.allGroupsUnifiedGraphData=[];
+    this.fileData.groups.forEach(group => {
+      group.peaks.forEach(item=>{
+        let length: number = item.eic.intensity.length;
+        if (length>maxLength){
+          maxLength=length;
+        }
+      });
+    });
+    this.fileData.groups.forEach(group => {
+      group.peaks.forEach(item=>{
+       
+        let gt =[];
+        this.graphData=[];
+        for(let i=0;i<=maxLength;i++){
+          gt=[];
+          if(item.eic.rt[i] || item.eic.intensity[i]){
+            gt.push(item.eic.rt[i]);
+            gt.push(item.eic.intensity[i]);}
+          else{
+            gt.push(0);
+            gt.push(0);
+          }
+          this.graphData.push(gt);
+  
+        }
+        mergeSampleData[item.sampleName]=this.graphData;
+      });
+    });
+    for (let key in mergeSampleData) {
+      let value = mergeSampleData[key];
+      this.allGroupsUnifiedGraphData.push({
+        key:key,
+        values:value
+      });   
+      // Use `key` and `value`
+  }
+    let xDomain=   this.calculateXDomain(this.allGroupsUnifiedGraphData);
+    this.x_min_all_groups=xDomain[0];
+    this.x_max_all_groups=xDomain[1];
   }
 
   handleFileInput(files: FileList) {
@@ -61,7 +115,7 @@ export class HomeComponent {
     }
     reader.onloadend = () =>{
       this.createGraph();
-
+      this.createGraphGroups();
     }
     reader.readAsText(files.item(0));
     console.log(this.fileData);
@@ -85,7 +139,7 @@ export class HomeComponent {
         }
       });
     });
-    this.x_min=xMax;
-    this.x_max=xMin;        
+    return [xMax,xMin];
+         
   }
 }

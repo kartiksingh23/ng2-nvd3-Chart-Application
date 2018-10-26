@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form-group">
-    <label style="margin-right:2%;" for="file">Choose File: </label>
+    <label style="margin-right:2%;" for="file">Upload File to Create Graphs Accordingly : </label>
     <input style="display:inline-block" type="file"
           id="file"
           (change)="handleFileInput($event.target.files)">
@@ -8,8 +8,16 @@
 </div>
 <div style="min-height:50px">
 </div>
-<div class="container">
-  <div class="col-sm-offset-2 col-md-offset-2 col-md-offset-2 col-sm-8 col-md-8 col-lg-8">
+<div *ngIf="allGroupsUnifiedGraphData.length>0" class="container">
+  <b>Salient Features Of The Graphs Created:</b>
+  <ul div class="row">
+    <li>Click on the sample name in legend or the area of the sample on the chart to filter out its data seperately.</li>
+    <li>Hover on the chart to view the tool tip. The tool tip clearly shows the intensity at any particular time.</li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-sm-offset-1 col-md-offset-1 col-md-offset-1 col-sm-10 col-md-10 col-lg-10">
       <app-stacked-area-chart [data]="unifiedGraphData" [xLabel]="'Retention Time (in Minutes)'" [yLabel]="'Intensity'"  [x_min]="x_min" [x_max]="x_max"></app-stacked-area-chart>
+      <app-stacked-area-chart [data]="allGroupsUnifiedGraphData" [xLabel]="'Retention Time (in Minutes)'" [yLabel]="'Intensity'"  [x_min]="x_min_all_groups" [x_max]="x_max_all_groups"></app-stacked-area-chart>
   </div>
 </div>

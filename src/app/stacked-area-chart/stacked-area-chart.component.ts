@@ -27,7 +27,7 @@ export class StackedAreaChartComponent implements OnInit {
   this.options = {
     chart: {
       type: 'stackedAreaChart',
-      height: 350,
+      height: 400,
       // width:450,
       margin : {  
           top: 20,
