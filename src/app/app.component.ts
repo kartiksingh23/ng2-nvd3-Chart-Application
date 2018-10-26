@@ -8,6 +8,6 @@ import {GraphType} from './GraphType';
 })
 export class AppComponent  {
 
-  public title = 'Chart Application Using Angular 7';
+  public title = 'Chart Application Using Angular 7'; 
  
 }
